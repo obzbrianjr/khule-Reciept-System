@@ -1,36 +1,22 @@
 <!-- =====================================================
-     KHULE RECEIPT SYSTEM — CLEAN MASTER VERSION
+     KHULE RECEIPT SYSTEM — MASTER V1
      ===================================================== -->
 
 <section id="khule-receipt-system">
 
-  <!-- ================= OFFICIAL HEADER ================= -->
-
   <div class="khule-official-header">
-
-    <div class="khule-logo-placeholder">
-      KHULE
-    </div>
+    <div class="khule-logo-placeholder">KHULE</div>
 
     <h2>KHULE FASHION</h2>
-
     <p><strong>KHULE MARKETPLACE</strong></p>
-
     <p>OFFICIAL SALES RECEIPT</p>
-
     <p>Tel: 0780 701825 / 0703 854776</p>
-
     <p>Uganda</p>
-
   </div>
-
 
   <div class="receipt-box">
 
-    <!-- ================= RECEIPT INFORMATION ================= -->
-
     <div class="khule-receipt-info">
-
       <p>
         <strong>Receipt No:</strong>
         <span id="khuleReceiptNumber">—</span>
@@ -40,19 +26,13 @@
         <strong>Date:</strong>
         <span id="khuleReceiptDate">—</span>
       </p>
-
     </div>
 
-
     <hr>
-
-
-    <!-- ================= SELLER & BUYER ================= -->
 
     <div class="khule-parties">
 
       <div class="khule-party-box">
-
         <h3>SELLER</h3>
 
         <p>
@@ -64,9 +44,7 @@
           <strong>Country:</strong>
           Uganda
         </p>
-
       </div>
-
 
       <div class="khule-party-box">
 
@@ -97,8 +75,6 @@
     </div>
 
 
-    <!-- ================= PURCHASE DETAILS ================= -->
-
     <h3>Purchase Details</h3>
 
     <div id="khuleItems">
@@ -116,6 +92,7 @@
           class="khule-quantity"
           placeholder="Qty"
           min="1"
+          step="1"
           value="1"
         >
 
@@ -124,6 +101,7 @@
           class="khule-price"
           placeholder="Price (UGX)"
           min="0"
+          step="1"
           value="0"
         >
 
@@ -134,12 +112,10 @@
 
     <button
       type="button"
-      onclick="khuleAddItem()">
+      id="khuleAddItemButton">
       + ADD ITEM
     </button>
 
-
-    <!-- ================= DISCOUNT ================= -->
 
     <div class="khule-input-section">
 
@@ -152,13 +128,12 @@
         id="khuleDiscountInput"
         placeholder="Enter discount"
         min="0"
+        step="1"
         value="0"
       >
 
     </div>
 
-
-    <!-- ================= TAX ================= -->
 
     <div class="khule-input-section">
 
@@ -179,8 +154,6 @@
     </div>
 
 
-    <!-- ================= TOTALS ================= -->
-
     <div class="khule-total-area">
 
       <p>
@@ -192,7 +165,6 @@
         </span>
       </p>
 
-
       <p>
         <strong>Discount:</strong>
 
@@ -202,7 +174,6 @@
         </span>
       </p>
 
-
       <p>
         <strong>Tax:</strong>
 
@@ -211,7 +182,6 @@
           <span id="khuleTaxAmount">0</span>
         </span>
       </p>
-
 
       <p class="khule-grand-total">
 
@@ -227,8 +197,6 @@
     </div>
 
 
-    <!-- ================= PAYMENT ================= -->
-
     <div class="khule-input-section">
 
       <label for="khuleAmountPaid">
@@ -240,6 +208,7 @@
         id="khuleAmountPaid"
         placeholder="Amount paid in UGX"
         min="0"
+        step="1"
         value="0"
       >
 
@@ -262,8 +231,6 @@
       Payment Status: UNPAID
     </p>
 
-
-    <!-- ================= PAYMENT METHOD ================= -->
 
     <div class="khule-payment-method">
 
@@ -303,34 +270,29 @@
     </div>
 
 
-    <!-- ================= ACTIONS ================= -->
-
     <div class="khule-actions">
 
       <button
         type="button"
-        onclick="khuleCalculateReceipt()">
+        id="khuleCalculateButton">
         🧮 CALCULATE
       </button>
 
-
       <button
         type="button"
-        onclick="khuleShowReceiptPreview()">
+        id="khulePreviewButton">
         👁️ PREVIEW RECEIPT
       </button>
 
-
       <button
         type="button"
-        onclick="khuleSaveReceipt()">
+        id="khuleSaveButton">
         💾 SAVE RECEIPT
       </button>
 
-
       <button
         type="button"
-        onclick="khulePrintReceipt()">
+        id="khulePrintButton">
         🖨️ PRINT RECEIPT
       </button>
 
@@ -384,7 +346,9 @@
 
       <p>
         <strong>Customer:</strong>
-        <span id="previewCustomer">Customer</span>
+        <span id="previewCustomer">
+          Walk-in Customer
+        </span>
       </p>
 
       <p>
@@ -417,30 +381,24 @@
 
       <p>
         <span>Subtotal</span>
-
         <strong id="previewSubtotal">
           UGX 0
         </strong>
       </p>
 
-
       <p>
         <span>Discount</span>
-
         <strong id="previewDiscount">
           UGX 0
         </strong>
       </p>
 
-
       <p>
         <span>Tax</span>
-
         <strong id="previewTax">
           UGX 0
         </strong>
       </p>
-
 
       <p class="preview-grand-total">
 
@@ -452,54 +410,46 @@
 
       </p>
 
-
       <p>
         <span>Amount Paid</span>
-
         <strong id="previewPaid">
           UGX 0
         </strong>
-
       </p>
-
 
       <p>
         <span>Balance Due</span>
-
         <strong id="previewBalance">
           UGX 0
         </strong>
-
       </p>
 
+      <p>
+        <span>Change</span>
+        <strong id="previewChange">
+          UGX 0
+        </strong>
+      </p>
 
       <p>
         <span>Payment Method</span>
-
         <strong id="previewPaymentMethod">
           Cash
         </strong>
-
       </p>
-
 
       <p>
         <span>Status</span>
-
         <strong id="previewStatus">
           UNPAID
         </strong>
-
       </p>
-
 
       <p>
         <span>Payment Reference</span>
-
         <strong id="previewPaymentReference">
           —
         </strong>
-
       </p>
 
     </div>
@@ -554,6 +504,7 @@
   margin: 30px auto;
   padding: 15px;
   font-family: Arial, sans-serif;
+  box-sizing: border-box;
 
 }
 
@@ -608,6 +559,8 @@
   font-weight: bold;
 
   letter-spacing: 2px;
+
+  box-sizing: border-box;
 
 }
 
@@ -737,6 +690,8 @@
   justify-content: space-between;
 
   align-items: center;
+
+  gap: 15px;
 
   padding: 9px 0;
 
@@ -876,6 +831,8 @@
   display: flex;
 
   justify-content: space-between;
+
+  gap: 15px;
 
   margin: 9px 0;
 
@@ -1049,11 +1006,33 @@
   "use strict";
 
 
-  /* =====================================================
-     MONEY FORMAT
-     ===================================================== */
+  const STORAGE_KEY =
+    "khuleReceipts";
 
-  function formatMoney(amount) {
+  let currentReceiptNumber =
+    "";
+
+
+  function byId(id) {
+
+    return document.getElementById(id);
+
+  }
+
+
+  function numberValue(id) {
+
+    const element =
+      byId(id);
+
+    return element
+      ? Number(element.value)
+      : 0;
+
+  }
+
+
+  function money(amount) {
 
     return Math.round(
       Number(amount) || 0
@@ -1062,38 +1041,368 @@
   }
 
 
-  /* =====================================================
-     RECEIPT NUMBER
-     ===================================================== */
+  function ugx(amount) {
+
+    return "UGX " +
+      money(amount);
+
+  }
+
+
+  function roundUGX(amount) {
+
+    return Math.round(
+      (Number(amount) || 0) +
+      Number.EPSILON
+    );
+
+  }
+
 
   function createReceiptNumber() {
 
-    const now = new Date();
+    const now =
+      new Date();
 
-    const year =
-      now.getFullYear();
+    const datePart =
+      now.getFullYear().toString() +
+      String(
+        now.getMonth() + 1
+      ).padStart(2, "0") +
+      String(
+        now.getDate()
+      ).padStart(2, "0");
 
-    const month =
-      String(now.getMonth() + 1)
-        .padStart(2, "0");
-
-    const day =
-      String(now.getDate())
-        .padStart(2, "0");
-
-    const time =
-      Date.now()
-        .toString()
-        .slice(-5);
 
     return (
       "KH-" +
-      year +
-      month +
-      day +
+      datePart +
       "-" +
-      time
+      Date.now()
+        .toString()
+        .slice(-7)
     );
+
+  }
+
+
+  /* =====================================================
+     GET ITEMS
+     ===================================================== */
+
+  function getItems() {
+
+    const items = [];
+
+
+    document.querySelectorAll(
+      "#khuleItems .khule-item"
+    ).forEach(
+      function (row) {
+
+        const name =
+          (
+            row.querySelector(
+              ".khule-product"
+            )?.value || ""
+          ).trim();
+
+
+        const quantity =
+          Number(
+            row.querySelector(
+              ".khule-quantity"
+            )?.value
+          ) || 0;
+
+
+        const unitPrice =
+          Number(
+            row.querySelector(
+              ".khule-price"
+            )?.value
+          ) || 0;
+
+
+        if (
+          !name &&
+          quantity === 0 &&
+          unitPrice === 0
+        ) {
+
+          return;
+
+        }
+
+
+        items.push({
+
+          name:
+            name,
+
+          quantity:
+            quantity,
+
+          unitPrice:
+            unitPrice
+
+        });
+
+      }
+    );
+
+
+    return items;
+
+  }
+
+
+  /* =====================================================
+     CALCULATION ENGINE
+     ===================================================== */
+
+  function calculate() {
+
+    const items =
+      getItems();
+
+
+    let subtotal = 0;
+
+
+    items.forEach(
+      function (item) {
+
+        const quantity =
+          Math.max(
+            0,
+            Math.floor(
+              item.quantity
+            )
+          );
+
+
+        const price =
+          Math.max(
+            0,
+            Math.floor(
+              item.unitPrice
+            )
+          );
+
+
+        if (
+          item.name &&
+          quantity > 0
+        ) {
+
+          subtotal +=
+            quantity * price;
+
+        }
+
+      }
+    );
+
+
+    subtotal =
+      roundUGX(subtotal);
+
+
+    /* DISCOUNT */
+
+    const discountInput =
+      Math.max(
+        0,
+        Math.floor(
+          numberValue(
+            "khuleDiscountInput"
+          ) || 0
+        )
+      );
+
+
+    const discount =
+      Math.min(
+        discountInput,
+        subtotal
+      );
+
+
+    /* TAXABLE AMOUNT */
+
+    const taxableAmount =
+      Math.max(
+        0,
+        subtotal - discount
+      );
+
+
+    /* TAX */
+
+    const taxRate =
+      Math.min(
+        100,
+        Math.max(
+          0,
+          numberValue(
+            "khuleTaxRate"
+          ) || 0
+        )
+      );
+
+
+    const tax =
+      roundUGX(
+        taxableAmount *
+        (taxRate / 100)
+      );
+
+
+    /* GRAND TOTAL */
+
+    const grandTotal =
+      roundUGX(
+        taxableAmount + tax
+      );
+
+
+    /* AMOUNT PAID */
+
+    const amountPaid =
+      Math.max(
+        0,
+        Math.floor(
+          numberValue(
+            "khuleAmountPaid"
+          ) || 0
+        )
+      );
+
+
+    /* BALANCE */
+
+    const balance =
+      roundUGX(
+        Math.max(
+          grandTotal -
+          amountPaid,
+          0
+        )
+      );
+
+
+    /* CHANGE */
+
+    const change =
+      roundUGX(
+        Math.max(
+          amountPaid -
+          grandTotal,
+          0
+        )
+      );
+
+
+    /* STATUS */
+
+    let status =
+      "UNPAID";
+
+
+    if (
+      grandTotal > 0 &&
+      amountPaid >= grandTotal
+    ) {
+
+      status =
+        "PAID";
+
+    } else if (
+      amountPaid > 0
+    ) {
+
+      status =
+        "PARTIALLY PAID";
+
+    }
+
+
+    /* DISPLAY */
+
+    byId(
+      "khuleSubtotal"
+    ).textContent =
+      money(subtotal);
+
+
+    byId(
+      "khuleDiscount"
+    ).textContent =
+      money(discount);
+
+
+    byId(
+      "khuleTaxAmount"
+    ).textContent =
+      money(tax);
+
+
+    byId(
+      "khuleGrandTotal"
+    ).textContent =
+      money(grandTotal);
+
+
+    byId(
+      "khuleBalance"
+    ).textContent =
+      money(balance);
+
+
+    byId(
+      "khulePaymentStatus"
+    ).textContent =
+      "Payment Status: " +
+      status;
+
+
+    return {
+
+      items:
+        items,
+
+      subtotal:
+        subtotal,
+
+      discount:
+        discount,
+
+      taxableAmount:
+        taxableAmount,
+
+      taxRate:
+        taxRate,
+
+      tax:
+        tax,
+
+      grandTotal:
+        grandTotal,
+
+      amountPaid:
+        amountPaid,
+
+      balance:
+        balance,
+
+      change:
+        change,
+
+      status:
+        status
+
+    };
 
   }
 
@@ -1102,22 +1411,24 @@
      ADD ITEM
      ===================================================== */
 
-  window.khuleAddItem = function () {
+  function addItem() {
 
-    const items =
-      document.getElementById(
+    const container =
+      byId(
         "khuleItems"
       );
 
-    if (!items) return;
+
+    if (!container) return;
 
 
-    const item =
+    const row =
       document.createElement(
         "div"
       );
 
-    item.className =
+
+    row.className =
       "khule-item";
 
 
@@ -1126,7 +1437,9 @@
         "input"
       );
 
-    product.type = "text";
+    product.type =
+      "text";
+
     product.className =
       "khule-product";
 
@@ -1139,15 +1452,23 @@
         "input"
       );
 
-    quantity.type = "number";
+    quantity.type =
+      "number";
+
     quantity.className =
       "khule-quantity";
 
     quantity.placeholder =
       "Qty";
 
-    quantity.min = "1";
-    quantity.value = "1";
+    quantity.min =
+      "1";
+
+    quantity.step =
+      "1";
+
+    quantity.value =
+      "1";
 
 
     const price =
@@ -1155,1142 +1476,1021 @@
         "input"
       );
 
-    price.type = "number";
+    price.type =
+      "number";
+
     price.className =
       "khule-price";
 
     price.placeholder =
       "Price (UGX)";
 
-    price.min = "0";
-    price.value = "0";
+    price.min =
+      "0";
 
+    price.step =
+      "1";
 
-    item.appendChild(product);
-    item.appendChild(quantity);
-    item.appendChild(price);
+    price.value =
+      "0";
 
-    items.appendChild(item);
 
-  };
+    row.append(
+      product,
+      quantity,
+      price
+    );
 
 
-  /* =====================================================
-     CALCULATION ENGINE
-     ===================================================== */
+    container.appendChild(
+      row
+    );
 
-  window.khuleCalculateReceipt =
-    function () {
 
-      const itemRows =
-        document.querySelectorAll(
-          ".khule-item"
-        );
+    product.focus();
 
 
-      let subtotal = 0;
+    calculate();
 
-
-      itemRows.forEach(
-        function (row) {
-
-          const quantity =
-            Number(
-              row.querySelector(
-                ".khule-quantity"
-              ).value
-            ) || 0;
-
-
-          const price =
-            Number(
-              row.querySelector(
-                ".khule-price"
-              ).value
-            ) || 0;
-
-
-          if (
-            quantity > 0 &&
-            price >= 0
-          ) {
-
-            subtotal +=
-              quantity * price;
-
-          }
-
-        }
-      );
-
-
-      /* ================= DISCOUNT ================= */
-
-      const discountInput =
-        Number(
-          document.getElementById(
-            "khuleDiscountInput"
-          ).value
-        ) || 0;
-
-
-      const discount =
-        Math.min(
-          Math.max(
-            discountInput,
-            0
-          ),
-          subtotal
-        );
-
-
-      /* ================= TAX ================= */
-
-      const taxableAmount =
-        Math.max(
-          subtotal - discount,
-          0
-        );
-
-
-      const taxRateInput =
-        Number(
-          document.getElementById(
-            "khuleTaxRate"
-          ).value
-        ) || 0;
-
-
-      const taxRate =
-        Math.min(
-          Math.max(
-            taxRateInput,
-            0
-          ),
-          100
-        );
-
-
-      const tax =
-        taxableAmount *
-        (taxRate / 100);
-
-
-      /* ================= GRAND TOTAL ================= */
-
-      const grandTotal =
-        taxableAmount + tax;
-
-
-      /* ================= PAYMENT ================= */
-
-      const amountPaid =
-        Math.max(
-          Number(
-            document.getElementById(
-              "khuleAmountPaid"
-            ).value
-          ) || 0,
-          0
-        );
-
-
-      /* ================= BALANCE ================= */
-
-      const balance =
-        Math.max(
-          grandTotal - amountPaid,
-          0
-        );
-
-
-      /* ================= STATUS ================= */
-
-      let status =
-        "UNPAID";
-
-
-      if (
-        grandTotal > 0 &&
-        amountPaid >= grandTotal
-      ) {
-
-        status = "PAID";
-
-      } else if (
-        amountPaid > 0
-      ) {
-
-        status = "PARTIALLY PAID";
-
-      }
-
-
-      /* ================= DISPLAY ================= */
-
-      document.getElementById(
-        "khuleSubtotal"
-      ).textContent =
-        formatMoney(subtotal);
-
-
-      document.getElementById(
-        "khuleDiscount"
-      ).textContent =
-        formatMoney(discount);
-
-
-      document.getElementById(
-        "khuleTaxAmount"
-      ).textContent =
-        formatMoney(tax);
-
-
-      document.getElementById(
-        "khuleGrandTotal"
-      ).textContent =
-        formatMoney(grandTotal);
-
-
-      document.getElementById(
-        "khuleBalance"
-      ).textContent =
-        formatMoney(balance);
-
-
-      document.getElementById(
-        "khulePaymentStatus"
-      ).textContent =
-        "Payment Status: " +
-        status;
-
-
-      return {
-
-        subtotal: subtotal,
-
-        discount: discount,
-
-        taxableAmount:
-          taxableAmount,
-
-        taxRate: taxRate,
-
-        tax: tax,
-
-        grandTotal:
-          grandTotal,
-
-        amountPaid:
-          amountPaid,
-
-        balance:
-          balance,
-
-        status:
-          status
-
-      };
-
-    };
+  }
 
 
   /* =====================================================
      PREVIEW
      ===================================================== */
 
-  window.khuleShowReceiptPreview =
-    function () {
+  function fillPreview() {
 
-      const calculation =
-        khuleCalculateReceipt();
-
-
-      document.getElementById(
-        "previewReceiptNumber"
-      ).textContent =
-        document.getElementById(
-          "khuleReceiptNumber"
-        ).textContent;
+    const calculation =
+      calculate();
 
 
-      document.getElementById(
-        "previewReceiptDate"
-      ).textContent =
-        document.getElementById(
-          "khuleReceiptDate"
-        ).textContent;
-
-
-      document.getElementById(
-        "previewCustomer"
-      ).textContent =
-        document.getElementById(
+    const customer =
+      (
+        byId(
           "khuleCustomerName"
-        ).value.trim()
-        || "Customer";
+        ).value || ""
+      ).trim() ||
+      "Walk-in Customer";
 
 
-      document.getElementById(
-        "previewPhone"
-      ).textContent =
-        document.getElementById(
+    const phone =
+      (
+        byId(
           "khuleCustomerPhone"
-        ).value.trim()
-        || "—";
+        ).value || ""
+      ).trim() ||
+      "—";
 
 
-      /* ================= ITEMS ================= */
-
-      const previewItems =
-        document.getElementById(
-          "previewItems"
-        );
-
-
-      previewItems.innerHTML = "";
+    byId(
+      "previewReceiptNumber"
+    ).textContent =
+      byId(
+        "khuleReceiptNumber"
+      ).textContent;
 
 
-      document.querySelectorAll(
-        ".khule-item"
-      ).forEach(
-        function (row) {
-
-          const name =
-            row.querySelector(
-              ".khule-product"
-            ).value.trim();
+    byId(
+      "previewReceiptDate"
+    ).textContent =
+      byId(
+        "khuleReceiptDate"
+      ).textContent;
 
 
-          const quantity =
-            Number(
-              row.querySelector(
-                ".khule-quantity"
-              ).value
-            ) || 0;
+    byId(
+      "previewCustomer"
+    ).textContent =
+      customer;
 
 
-          const price =
-            Number(
-              row.querySelector(
-                ".khule-price"
-              ).value
-            ) || 0;
+    byId(
+      "previewPhone"
+    ).textContent =
+      phone;
 
 
-          if (!name) return;
-
-
-          const rowTotal =
-            quantity * price;
-
-
-          const tr =
-            document.createElement(
-              "tr"
-            );
-
-
-          const nameCell =
-            document.createElement(
-              "td"
-            );
-
-          nameCell.textContent =
-            name;
-
-
-          const quantityCell =
-            document.createElement(
-              "td"
-            );
-
-          quantityCell.textContent =
-            quantity;
-
-
-          const priceCell =
-            document.createElement(
-              "td"
-            );
-
-          priceCell.textContent =
-            "UGX " +
-            formatMoney(price);
-
-
-          const totalCell =
-            document.createElement(
-              "td"
-            );
-
-          totalCell.textContent =
-            "UGX " +
-            formatMoney(rowTotal);
-
-
-          tr.appendChild(nameCell);
-          tr.appendChild(quantityCell);
-          tr.appendChild(priceCell);
-          tr.appendChild(totalCell);
-
-
-          previewItems.appendChild(tr);
-
-        }
+    const tbody =
+      byId(
+        "previewItems"
       );
 
 
-      /* ================= PREVIEW TOTALS ================= */
+    tbody.replaceChildren();
 
-      document.getElementById(
-        "previewSubtotal"
-      ).textContent =
-        "UGX " +
-        formatMoney(
-          calculation.subtotal
+
+    calculation.items.forEach(
+      function (item) {
+
+        const quantity =
+          Math.max(
+            0,
+            Math.floor(
+              item.quantity
+            )
+          );
+
+
+        const price =
+          Math.max(
+            0,
+            Math.floor(
+              item.unitPrice
+            )
+          );
+
+
+        if (
+          !item.name ||
+          quantity <= 0
+        ) {
+
+          return;
+
+        }
+
+
+        const tr =
+          document.createElement(
+            "tr"
+          );
+
+
+        const values = [
+
+          item.name,
+
+          String(
+            quantity
+          ),
+
+          ugx(
+            price
+          ),
+
+          ugx(
+            quantity * price
+          )
+
+        ];
+
+
+        values.forEach(
+          function (value) {
+
+            const td =
+              document.createElement(
+                "td"
+              );
+
+
+            td.textContent =
+              value;
+
+
+            tr.appendChild(
+              td
+            );
+
+          }
         );
 
 
-      document.getElementById(
-        "previewDiscount"
-      ).textContent =
-        "UGX " +
-        formatMoney(
-          calculation.discount
+        tbody.appendChild(
+          tr
         );
 
-
-      document.getElementById(
-        "previewTax"
-      ).textContent =
-        "UGX " +
-        formatMoney(
-          calculation.tax
-        );
+      }
+    );
 
 
-      document.getElementById(
-        "previewGrandTotal"
-      ).textContent =
-        "UGX " +
-        formatMoney(
-          calculation.grandTotal
-        );
+    byId(
+      "previewSubtotal"
+    ).textContent =
+      ugx(
+        calculation.subtotal
+      );
 
 
-      document.getElementById(
-        "previewPaid"
-      ).textContent =
-        "UGX " +
-        formatMoney(
-          calculation.amountPaid
-        );
+    byId(
+      "previewDiscount"
+    ).textContent =
+      ugx(
+        calculation.discount
+      );
 
 
-      document.getElementById(
-        "previewBalance"
-      ).textContent =
-        "UGX " +
-        formatMoney(
-          calculation.balance
-        );
+    byId(
+      "previewTax"
+    ).textContent =
+      ugx(
+        calculation.tax
+      );
 
 
-      document.getElementById(
-        "previewPaymentMethod"
-      ).textContent =
-        document.getElementById(
-          "khulePaymentMethod"
-        ).value;
+    byId(
+      "previewGrandTotal"
+    ).textContent =
+      ugx(
+        calculation.grandTotal
+      );
 
 
-      document.getElementById(
-        "previewPaymentReference"
-      ).textContent =
-        document.getElementById(
+    byId(
+      "previewPaid"
+    ).textContent =
+      ugx(
+        calculation.amountPaid
+      );
+
+
+    byId(
+      "previewBalance"
+    ).textContent =
+      ugx(
+        calculation.balance
+      );
+
+
+    byId(
+      "previewChange"
+    ).textContent =
+      ugx(
+        calculation.change
+      );
+
+
+    byId(
+      "previewPaymentMethod"
+    ).textContent =
+      byId(
+        "khulePaymentMethod"
+      ).value;
+
+
+    byId(
+      "previewStatus"
+    ).textContent =
+      calculation.status;
+
+
+    byId(
+      "previewPaymentReference"
+    ).textContent =
+      (
+        byId(
           "khulePaymentReference"
-        ).value.trim()
-        || "—";
+        ).value || ""
+      ).trim() ||
+      "—";
+
+  }
 
 
-      document.getElementById(
-        "previewStatus"
-      ).textContent =
-        calculation.status;
+  function showPreview() {
+
+    fillPreview();
 
 
-      /* ================= SHOW ================= */
-
-      const preview =
-        document.getElementById(
-          "khuleReceiptPreview"
-        );
+    const preview =
+      byId(
+        "khuleReceiptPreview"
+      );
 
 
-      preview.style.display =
-        "block";
+    preview.style.display =
+      "block";
 
 
-      preview.scrollIntoView({
-        behavior: "smooth"
-      });
+    preview.scrollIntoView({
+      behavior:
+        "smooth"
+    });
 
-    };
+  }
 
 
   /* =====================================================
-     SAVE RECEIPT
+     STORAGE
      ===================================================== */
 
-  window.khuleSaveReceipt =
-    function () {
+  function readReceipts() {
 
-      const calculation =
-        khuleCalculateReceipt();
+    try {
 
-
-      if (
-        calculation.grandTotal <= 0
-      ) {
-
-        alert(
-          "Please add at least one product or service with a price before saving."
+      const raw =
+        localStorage.getItem(
+          STORAGE_KEY
         );
 
-        return;
 
-      }
-
-
-      const items = [];
-
-
-      document.querySelectorAll(
-        ".khule-item"
-      ).forEach(
-        function (row) {
-
-          const name =
-            row.querySelector(
-              ".khule-product"
-            ).value.trim();
+      const data =
+        raw
+          ? JSON.parse(raw)
+          : [];
 
 
-          const quantity =
-            Number(
-              row.querySelector(
-                ".khule-quantity"
-              ).value
-            ) || 0;
+      return Array.isArray(data)
+        ? data
+        : [];
+
+    } catch (error) {
+
+      return [];
+
+    }
+
+  }
 
 
-          const unitPrice =
-            Number(
-              row.querySelector(
-                ".khule-price"
-              ).value
-            ) || 0;
+  function writeReceipts(
+    receipts
+  ) {
 
-
-          if (
-            name &&
-            quantity > 0
-          ) {
-
-            items.push({
-
-              name:
-                name,
-
-              quantity:
-                quantity,
-
-              unitPrice:
-                unitPrice,
-
-              total:
-                quantity *
-                unitPrice
-
-            });
-
-          }
-
-        }
-      );
-
-
-      const receipt = {
-
-        receiptNumber:
-          document.getElementById(
-            "khuleReceiptNumber"
-          ).textContent,
-
-        date:
-          document.getElementById(
-            "khuleReceiptDate"
-          ).textContent,
-
-        customer: {
-
-          name:
-            document.getElementById(
-              "khuleCustomerName"
-            ).value.trim(),
-
-          phone:
-            document.getElementById(
-              "khuleCustomerPhone"
-            ).value.trim()
-
-        },
-
-        items:
-          items,
-
-        subtotal:
-          calculation.subtotal,
-
-        discount:
-          calculation.discount,
-
-        taxRate:
-          calculation.taxRate,
-
-        tax:
-          calculation.tax,
-
-        total:
-          calculation.grandTotal,
-
-        amountPaid:
-          calculation.amountPaid,
-
-        balance:
-          calculation.balance,
-
-        payment: {
-
-          method:
-            document.getElementById(
-              "khulePaymentMethod"
-            ).value,
-
-          reference:
-            document.getElementById(
-              "khulePaymentReference"
-            ).value.trim()
-
-        },
-
-        status:
-          calculation.status
-
-      };
-
-
-      let receipts = [];
-
-
-      try {
-
-        receipts =
-          JSON.parse(
-            localStorage.getItem(
-              "khuleReceipts"
-            )
-          ) || [];
-
-      } catch (error) {
-
-        receipts = [];
-
-      }
-
-
-      receipts.push(
-        receipt
-      );
-
+    try {
 
       localStorage.setItem(
-        "khuleReceipts",
+        STORAGE_KEY,
         JSON.stringify(
           receipts
         )
       );
 
 
-      khuleLoadReceiptHistory();
+      return true;
 
+    } catch (error) {
 
       alert(
-        "KHULE receipt saved successfully."
+        "Receipt could not be saved. Browser storage is unavailable or full."
       );
 
+
+      return false;
+
+    }
+
+  }
+
+
+  /* =====================================================
+     SAVE RECEIPT
+     ===================================================== */
+
+  function saveReceipt() {
+
+    const calculation =
+      calculate();
+
+
+    const validItems =
+      calculation.items.filter(
+        function (item) {
+
+          return (
+
+            item.name &&
+
+            Number.isFinite(
+              item.quantity
+            ) &&
+
+            item.quantity > 0 &&
+
+            Number.isFinite(
+              item.unitPrice
+            ) &&
+
+            item.unitPrice >= 0
+
+          );
+
+        }
+      );
+
+
+    if (
+      validItems.length === 0 ||
+      calculation.grandTotal <= 0
+    ) {
+
+      alert(
+        "Please enter at least one product/service with a valid price before saving."
+      );
+
+
+      return;
+
+    }
+
+
+    const normalizedItems =
+      validItems.map(
+        function (item) {
+
+          const quantity =
+            Math.floor(
+              item.quantity
+            );
+
+
+          const unitPrice =
+            Math.floor(
+              item.unitPrice
+            );
+
+
+          return {
+
+            name:
+              item.name,
+
+            quantity:
+              quantity,
+
+            unitPrice:
+              unitPrice,
+
+            total:
+              roundUGX(
+                quantity *
+                unitPrice
+              )
+
+          };
+
+        }
+      );
+
+
+    const receipt = {
+
+      receiptNumber:
+        currentReceiptNumber,
+
+      date:
+        byId(
+          "khuleReceiptDate"
+        ).textContent,
+
+      customer: {
+
+        name:
+          (
+            byId(
+              "khuleCustomerName"
+            ).value || ""
+          ).trim() ||
+          "Walk-in Customer",
+
+        phone:
+          (
+            byId(
+              "khuleCustomerPhone"
+            ).value || ""
+          ).trim()
+
+      },
+
+      items:
+        normalizedItems,
+
+      subtotal:
+        calculation.subtotal,
+
+      discount:
+        calculation.discount,
+
+      taxRate:
+        calculation.taxRate,
+
+      tax:
+        calculation.tax,
+
+      total:
+        calculation.grandTotal,
+
+      amountPaid:
+        calculation.amountPaid,
+
+      balance:
+        calculation.balance,
+
+      change:
+        calculation.change,
+
+      payment: {
+
+        method:
+          byId(
+            "khulePaymentMethod"
+          ).value,
+
+        reference:
+          (
+            byId(
+              "khulePaymentReference"
+            ).value || ""
+          ).trim()
+
+      },
+
+      status:
+        calculation.status,
+
+      savedAt:
+        new Date().toISOString()
+
     };
+
+
+    const receipts =
+      readReceipts();
+
+
+    const duplicate =
+      receipts.some(
+        function (savedReceipt) {
+
+          return (
+            savedReceipt &&
+            savedReceipt.receiptNumber ===
+            receipt.receiptNumber
+          );
+
+        }
+      );
+
+
+    if (duplicate) {
+
+      alert(
+        "This receipt number already exists. A new receipt number is required."
+      );
+
+
+      return;
+
+    }
+
+
+    receipts.push(
+      receipt
+    );
+
+
+    if (
+      !writeReceipts(
+        receipts
+      )
+    ) {
+
+      return;
+
+    }
+
+
+    loadHistory();
+
+
+    alert(
+      "KHULE receipt saved successfully."
+    );
+
+  }
 
 
   /* =====================================================
      RECEIPT HISTORY
      ===================================================== */
 
-  window.khuleLoadReceiptHistory =
-    function () {
+  function loadHistory() {
 
-      const list =
-        document.getElementById(
-          "khuleReceiptList"
+    const list =
+      byId(
+        "khuleReceiptList"
+      );
+
+
+    if (!list) return;
+
+
+    const receipts =
+      readReceipts();
+
+
+    list.replaceChildren();
+
+
+    if (
+      receipts.length === 0
+    ) {
+
+      const p =
+        document.createElement(
+          "p"
         );
 
 
-      if (!list) return;
+      p.textContent =
+        "No saved receipts yet.";
 
 
-      let receipts = [];
+      list.appendChild(
+        p
+      );
 
 
-      try {
+      return;
 
-        receipts =
-          JSON.parse(
-            localStorage.getItem(
-              "khuleReceipts"
-            )
-          ) || [];
-
-      } catch (error) {
-
-        receipts = [];
-
-      }
+    }
 
 
-      if (
-        receipts.length === 0
-      ) {
+    receipts
+      .slice()
+      .reverse()
+      .forEach(
+        function (receipt) {
 
-        list.innerHTML =
-          "<p>No saved receipts yet.</p>";
-
-        return;
-
-      }
-
-
-      list.innerHTML = "";
+          const card =
+            document.createElement(
+              "div"
+            );
 
 
-      receipts
-        .slice()
-        .reverse()
-        .forEach(
-          function (
-            receipt,
-            reversedIndex
+          card.className =
+            "khule-history-card";
+
+
+          function addLine(
+            label,
+            value
           ) {
 
-            const realIndex =
-              receipts.length -
-              1 -
-              reversedIndex;
-
-
-            const card =
-              document.createElement(
-                "div"
-              );
-
-
-            card.className =
-              "khule-history-card";
-
-
-            const receiptP =
+            const p =
               document.createElement(
                 "p"
               );
 
-            receiptP.innerHTML =
-              "<strong>Receipt:</strong> ";
+
+            const strong =
+              document.createElement(
+                "strong"
+              );
 
 
-            receiptP.appendChild(
+            strong.textContent =
+              label + ": ";
+
+
+            p.append(
+              strong,
               document.createTextNode(
-                receipt.receiptNumber || "—"
+                value
               )
             );
 
 
-            const dateP =
-              document.createElement(
-                "p"
-              );
-
-            dateP.innerHTML =
-              "<strong>Date:</strong> ";
-
-            dateP.appendChild(
-              document.createTextNode(
-                receipt.date || "—"
-              )
-            );
-
-
-            const customerP =
-              document.createElement(
-                "p"
-              );
-
-            customerP.innerHTML =
-              "<strong>Customer:</strong> ";
-
-            customerP.appendChild(
-              document.createTextNode(
-                receipt.customer &&
-                receipt.customer.name
-                  ? receipt.customer.name
-                  : "Customer"
-              )
-            );
-
-
-            const totalP =
-              document.createElement(
-                "p"
-              );
-
-            totalP.innerHTML =
-              "<strong>Total:</strong> UGX ";
-
-            totalP.appendChild(
-              document.createTextNode(
-                formatMoney(
-                  receipt.total
-                )
-              )
-            );
-
-
-            const paymentP =
-              document.createElement(
-                "p"
-              );
-
-            paymentP.innerHTML =
-              "<strong>Payment:</strong> ";
-
-            paymentP.appendChild(
-              document.createTextNode(
-                receipt.payment &&
-                receipt.payment.method
-                  ? receipt.payment.method
-                  : "—"
-              )
-            );
-
-
-            const statusP =
-              document.createElement(
-                "p"
-              );
-
-            statusP.innerHTML =
-              "<strong>Status:</strong> ";
-
-            statusP.appendChild(
-              document.createTextNode(
-                receipt.status || "UNPAID"
-              )
-            );
-
-
-            const viewButton =
-              document.createElement(
-                "button"
-              );
-
-            viewButton.type =
-              "button";
-
-            viewButton.textContent =
-              "VIEW RECEIPT";
-
-
-            viewButton.onclick =
-              function () {
-
-                khuleViewSavedReceipt(
-                  realIndex
-                );
-
-              };
-
-
             card.appendChild(
-              receiptP
-            );
-
-            card.appendChild(
-              dateP
-            );
-
-            card.appendChild(
-              customerP
-            );
-
-            card.appendChild(
-              totalP
-            );
-
-            card.appendChild(
-              paymentP
-            );
-
-            card.appendChild(
-              statusP
-            );
-
-            card.appendChild(
-              viewButton
-            );
-
-
-            list.appendChild(
-              card
+              p
             );
 
           }
-        );
 
-    };
+
+          addLine(
+            "Receipt",
+            receipt.receiptNumber ||
+              "—"
+          );
+
+
+          addLine(
+            "Date",
+            receipt.date ||
+              "—"
+          );
+
+
+          addLine(
+            "Customer",
+            receipt.customer?.name ||
+              "Walk-in Customer"
+          );
+
+
+          addLine(
+            "Total",
+            ugx(
+              receipt.total
+            )
+          );
+
+
+          addLine(
+            "Payment",
+            receipt.payment?.method ||
+              "—"
+          );
+
+
+          addLine(
+            "Status",
+            receipt.status ||
+              "UNPAID"
+          );
+
+
+          const button =
+            document.createElement(
+              "button"
+            );
+
+
+          button.type =
+            "button";
+
+
+          button.textContent =
+            "VIEW RECEIPT";
+
+
+          button.addEventListener(
+            "click",
+            function () {
+
+              viewSavedReceipt(
+                receipt.receiptNumber
+              );
+
+            }
+          );
+
+
+          card.appendChild(
+            button
+          );
+
+
+          list.appendChild(
+            card
+          );
+
+        }
+      );
+
+  }
 
 
   /* =====================================================
      VIEW SAVED RECEIPT
      ===================================================== */
 
-  window.khuleViewSavedReceipt =
-    function (index) {
+  function viewSavedReceipt(
+    receiptNumber
+  ) {
 
-      let receipts = [];
+    const receipt =
+      readReceipts().find(
+        function (item) {
 
+          return (
+            item &&
+            item.receiptNumber ===
+            receiptNumber
+          );
 
-      try {
-
-        receipts =
-          JSON.parse(
-            localStorage.getItem(
-              "khuleReceipts"
-            )
-          ) || [];
-
-      } catch (error) {
-
-        receipts = [];
-
-      }
-
-
-      const receipt =
-        receipts[index];
-
-
-      if (!receipt) {
-
-        alert(
-          "Receipt could not be found."
-        );
-
-        return;
-
-      }
-
-
-      alert(
-
-        "KHULE RECEIPT\n\n" +
-
-        "Receipt No: " +
-        (
-          receipt.receiptNumber ||
-          "—"
-        ) +
-
-        "\nCustomer: " +
-        (
-          receipt.customer &&
-          receipt.customer.name
-            ? receipt.customer.name
-            : "Customer"
-        ) +
-
-        "\nTotal: UGX " +
-        formatMoney(
-          receipt.total
-        ) +
-
-        "\nAmount Paid: UGX " +
-        formatMoney(
-          receipt.amountPaid
-        ) +
-
-        "\nBalance Due: UGX " +
-        formatMoney(
-          receipt.balance
-        ) +
-
-        "\nPayment: " +
-        (
-          receipt.payment &&
-          receipt.payment.method
-            ? receipt.payment.method
-            : "—"
-        ) +
-
-        "\nStatus: " +
-        (
-          receipt.status ||
-          "UNPAID"
-        )
-
+        }
       );
 
-    };
+
+    if (!receipt) {
+
+      alert(
+        "Receipt could not be found."
+      );
+
+
+      return;
+
+    }
+
+
+    alert(
+
+      "KHULE RECEIPT\n\n" +
+
+      "Receipt No: " +
+      (
+        receipt.receiptNumber ||
+        "—"
+      ) +
+
+      "\nCustomer: " +
+      (
+        receipt.customer?.name ||
+        "Walk-in Customer"
+      ) +
+
+      "\nTotal: " +
+      ugx(
+        receipt.total
+      ) +
+
+      "\nAmount Paid: " +
+      ugx(
+        receipt.amountPaid
+      ) +
+
+      "\nBalance Due: " +
+      ugx(
+        receipt.balance
+      ) +
+
+      "\nChange: " +
+      ugx(
+        receipt.change
+      ) +
+
+      "\nPayment: " +
+      (
+        receipt.payment?.method ||
+        "—"
+      ) +
+
+      "\nStatus: " +
+      (
+        receipt.status ||
+        "UNPAID"
+      )
+
+    );
+
+  }
 
 
   /* =====================================================
      PRINT
      ===================================================== */
 
-  window.khulePrintReceipt =
-    function () {
+  function printReceipt() {
 
-      khuleShowReceiptPreview();
+    showPreview();
 
 
-      setTimeout(
-        function () {
+    setTimeout(
+      function () {
 
-          window.print();
+        window.print();
 
-        },
-        300
-      );
+      },
+      300
+    );
 
-    };
+  }
 
 
   /* =====================================================
-     INITIALIZE SYSTEM
+     INITIALIZE
      ===================================================== */
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+  function init() {
 
-      const receiptNumber =
-        document.getElementById(
-          "khuleReceiptNumber"
-        );
+    currentReceiptNumber =
+      createReceiptNumber();
 
 
-      const receiptDate =
-        document.getElementById(
-          "khuleReceiptDate"
-        );
+    byId(
+      "khuleReceiptNumber"
+    ).textContent =
+      currentReceiptNumber;
 
 
-      if (receiptNumber) {
-
-        receiptNumber.textContent =
-          createReceiptNumber();
-
-      }
-
-
-      if (receiptDate) {
-
-        receiptDate.textContent =
-          new Date().toLocaleString(
-            "en-UG"
-          );
-
-      }
+    byId(
+      "khuleReceiptDate"
+    ).textContent =
+      new Date().toLocaleString(
+        "en-UG"
+      );
 
 
-      const amountPaid =
-        document.getElementById(
-          "khuleAmountPaid"
-        );
+    byId(
+      "khuleAddItemButton"
+    ).addEventListener(
+      "click",
+      addItem
+    );
 
 
-      const discount =
-        document.getElementById(
-          "khuleDiscountInput"
-        );
+    byId(
+      "khuleCalculateButton"
+    ).addEventListener(
+      "click",
+      calculate
+    );
 
 
-      const tax =
-        document.getElementById(
-          "khuleTaxRate"
-        );
+    byId(
+      "khulePreviewButton"
+    ).addEventListener(
+      "click",
+      showPreview
+    );
 
 
-      const paymentReference =
-        document.getElementById(
-          "khulePaymentReference"
-        );
+    byId(
+      "khuleSaveButton"
+    ).addEventListener(
+      "click",
+      saveReceipt
+    );
 
 
-      /* Recalculate automatically */
+    byId(
+      "khulePrintButton"
+    ).addEventListener(
+      "click",
+      printReceipt
+    );
 
-      if (amountPaid) {
 
-        amountPaid.addEventListener(
+    [
+      "khuleDiscountInput",
+      "khuleTaxRate",
+      "khuleAmountPaid"
+    ].forEach(
+      function (id) {
+
+        byId(id).addEventListener(
           "input",
-          khuleCalculateReceipt
+          calculate
         );
 
       }
+    );
 
 
-      if (discount) {
-
-        discount.addEventListener(
-          "input",
-          khuleCalculateReceipt
-        );
-
-      }
+    byId(
+      "khuleItems"
+    ).addEventListener(
+      "input",
+      calculate
+    );
 
 
-      if (tax) {
-
-        tax.addEventListener(
-          "input",
-          khuleCalculateReceipt
-        );
-
-      }
+    loadHistory();
 
 
-      /* Load saved receipts */
+    calculate();
 
-      khuleLoadReceiptHistory();
+  }
 
 
-      /* Initial calculation */
+  /* Expose functions */
 
-      khuleCalculateReceipt();
+  window.khuleAddItem =
+    addItem;
 
-    });
+  window.khuleCalculateReceipt =
+    calculate;
+
+  window.khuleShowReceiptPreview =
+    showPreview;
+
+  window.khuleSaveReceipt =
+    saveReceipt;
+
+  window.khuleLoadReceiptHistory =
+    loadHistory;
+
+  window.khuleViewSavedReceipt =
+    viewSavedReceipt;
+
+  window.khulePrintReceipt =
+    printReceipt;
+
+
+  if (
+    document.readyState ===
+    "loading"
+  ) {
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      init
+    );
+
+  } else {
+
+    init();
+
+  }
 
 })();
 
 </script>
+
 
 <!-- =====================================================
      KHULE RECEIPT SYSTEM — END
